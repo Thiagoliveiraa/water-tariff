@@ -1,0 +1,34 @@
+volumes:
+  postgres:
+  pgadmin:
+
+services:
+#  Connecting in pgadming type: docker inspect [containerId] | grep IPAddress
+#  catch the address and put in create server with the credential below
+    postgres:
+      image: 'postgres:15.3'
+      environment:
+        - 'POSTGRES_USER=dbuserwatertariff'
+        - 'POSTGRES_PASSWORD=dbpasswatertariff'
+        - 'POSTGRES_DB=dbwatertariff'
+      volumes:
+        - postgres:/data/postgres
+      ports:
+        - '5432:5432'
+      restart: always
+      labels:
+        org.springframework.boot.jdbc.parameters: 'ssl=true&sslmode=require'
+
+    pgadmin:
+      container_name: pgadmin
+      image: dpage/pgadmin4:latest
+      environment:
+        - 'PGADMIN_DEFAULT_EMAIL=admin@localhost.com'
+        -  'PGADMIN_DEFAULT_PASSWORD=admin'
+        -  'PGADMIN_LISTEN_PORT=5050'
+      volumes:
+        - pgadmin:/var/lib/pgadmin
+      ports:
+          - '5050:5050'
+      restart: always
+
