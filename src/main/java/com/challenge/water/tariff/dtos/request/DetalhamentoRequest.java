@@ -11,5 +11,4 @@ public record DetalhamentoRequest(
         @NotNull CategoriaRequest categoria,
         @NotNull @NotEmpty @Valid List<FaixaConsumoRequest> faixasConsumo
         ) {
-    //TODO: criar o construtor do record para prevenir lista nula e imutavel!
 }

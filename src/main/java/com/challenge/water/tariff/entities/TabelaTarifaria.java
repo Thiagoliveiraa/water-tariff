@@ -1,5 +1,6 @@
 package com.challenge.water.tariff.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +30,8 @@ public class TabelaTarifaria {
     @Column(name = "data_vigencia_fim")
     private LocalDate dataVigenciaFim;
 
-    @OneToMany(mappedBy = "tabelaTarifaria")
+//    @OneToMany(mappedBy = "tabelaTarifaria")
+    @OneToMany(mappedBy = "tabelaTarifaria", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Categoria> categorias = new ArrayList<>();
 
     public TabelaTarifaria(Long id, String nome, LocalDate dataVigenciaInicio, LocalDate dataVigenciaFim) {
@@ -75,6 +77,11 @@ public class TabelaTarifaria {
 
     public List<Categoria> getCategorias() {
         return categorias;
+    }
+
+    public void addCategoria(Categoria categoria) {
+        this.categorias.add(categoria);
+        categoria.setTabelaTarifaria(this);
     }
 
     @Override
