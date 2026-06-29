@@ -7,8 +7,8 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-public record CategoriaRequest(
-        @NotNull Categoria categoria,
+public record DetalhamentoRequest(
+        @NotNull CategoriaRequest categoria,
         @NotNull @NotEmpty @Valid List<FaixaConsumoRequest> faixasConsumo
         ) {
     //TODO: criar o construtor do record para prevenir lista nula e imutavel!

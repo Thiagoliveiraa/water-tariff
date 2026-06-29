@@ -10,4 +10,4 @@ public record FaixaConsumoRequest(
         @NotNull @Min(0) Integer faixaInicio,
         @NotNull @Min(1) Integer faixaFim,
         @NotNull @DecimalMin("0.0001") BigDecimal valorUnitario
-) {}
+){}

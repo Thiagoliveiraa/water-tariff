@@ -5,6 +5,6 @@ import com.challenge.water.tariff.entities.Categoria;
 import java.util.List;
 
 public record CategoriaResponse(
-        Long id, Categoria categoria,
+        Long id, String categoria,
         List<FaixaConsumoResponse> faixasConsumo
-) {}
+){}
