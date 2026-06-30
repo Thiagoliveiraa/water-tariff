@@ -34,7 +34,6 @@
  ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
 
 </div>
-# API de Tabela Tarifária de Água
 
 API REST desenvolvida em **Java 25** com **Spring Boot** para gerenciamento de tabelas tarifárias e cálculo de tarifas de água com base em categorias de consumidores e faixas de consumo progressivas.
 
