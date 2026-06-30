@@ -1,4 +1,40 @@
 # API de Tabela Tarifária de Água
+<div>
+
+```text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+██╗    ██╗ █████╗ ████████╗███████╗██████╗
+██║    ██║██╔══██╗╚══██╔══╝██╔════╝██╔══██╗
+██║ █╗ ██║███████║   ██║   █████╗  ██████╔╝
+██║███╗██║██╔══██║   ██║   ██╔══╝  ██╔══██╗
+╚███╔███╔╝██║  ██║   ██║   ███████╗██║  ██║
+ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+
+████████╗ █████╗ ██████╗ ██╗███████╗███████╗
+╚══██╔══╝██╔══██╗██╔══██╗██║██╔════╝██╔════╝
+   ██║   ███████║██████╔╝██║█████╗  █████╗
+   ██║   ██╔══██║██╔══██╗██║██╔══╝  ██╔══╝
+   ██║   ██║  ██║██║  ██║██║██║     ██║
+   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝
+
+                💧 Water Tariff API 💧
+     Sistema de Gerenciamento de Tarifas de Água
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
+
+# 💧 Water Tariff API
+
+**Sistema de Gerenciamento de Tarifas de Água**
+
+![Java](https://img.shields.io/badge/Java-21-orange)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
+
+</div>
+# API de Tabela Tarifária de Água
 
 API REST desenvolvida em **Java 25** com **Spring Boot** para gerenciamento de tabelas tarifárias e cálculo de tarifas de água com base em categorias de consumidores e faixas de consumo progressivas.
 
