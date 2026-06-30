@@ -72,14 +72,13 @@ Após alguns segundos os serviços estarão disponíveis.
 
 ## PostgreSQL
 
-| Configuração | Valor        |
-| ------------ | ------------ |
-| Host         | localhost    |
-| Porta        | 5432         |
-| Database     | water_tariff |
-| Usuário      | postgres     |
-| Senha        | postgres     |
-
+| Configuração | Valor |
+|--------------|-------|
+| Host | localhost |
+| Porta | 5432 |
+| Database | dbwatertariff |
+| Usuário | dbuserwatertariff |
+| Senha | dbpasswatertariff |
 *(Caso tenha alterado essas informações no `docker-compose.yml`, utilize as credenciais correspondentes.)*
 
 ---
@@ -96,7 +95,7 @@ Credenciais (conforme docker-compose):
 
 ```
 Email:
-admin@admin.com
+admin@localhost.com
 
 Senha:
 admin
@@ -104,24 +103,35 @@ admin
 
 ---
 
-# Configuração da aplicação
+## Configuração da aplicação
 
-No arquivo `application.yml` configure as propriedades do banco:
+O projeto já está configurado para utilizar o PostgreSQL definido no `docker-compose.yml`.
 
 ```yaml
 spring:
+  application:
+    name: water-tariff
+
   datasource:
-    url: jdbc:postgresql://localhost:5432/water_tariff
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://localhost:5432/dbwatertariff
+    username: ${POSTGRES_USER:dbuserwatertariff}
+    password: ${POSTGRES_PASS:dbpasswatertariff}
 
   jpa:
+    open-in-view: false
+    show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
 ```
 
----
+> **Observação:** As propriedades `username` e `password` utilizam variáveis de ambiente (`POSTGRES_USER` e `POSTGRES_PASS`). Caso elas não estejam definidas, serão utilizados os valores padrão `dbuserwatertariff` e `dbpasswatertariff`, compatíveis com o `docker-compose.yml`.
 
+---
 # Executando a aplicação
 
 Execute utilizando o Maven:
@@ -145,6 +155,55 @@ http://localhost:8080
 ---
 
 # Endpoints
+
+## Calcular tarifa
+
+**POST**
+
+```
+/api/calculos
+```
+
+### Request
+
+```json
+{
+  "categoria": "INDUSTRIAL",
+  "consumo": 18
+}
+```
+
+### Response
+
+```json
+{
+  "categoria": "INDUSTRIAL",
+  "consumoTotal": 18,
+  "valorTotal": 26.00,
+  "detalhamento": [
+    {
+      "faixa": {
+        "inicio": 0,
+        "fim": 10
+      },
+      "m3Cobrados": 10,
+      "valorUnitario": 1.00,
+      "subtotal": 10.00
+    },
+    {
+      "faixa": {
+        "inicio": 11,
+        "fim": 20
+      },
+      "m3Cobrados": 8,
+      "valorUnitario": 2.00,
+      "subtotal": 16.00
+    }
+  ]
+}
+```
+
+---
 
 ## Criar tabela tarifária
 
@@ -228,55 +287,6 @@ http://localhost:8080
 
 ```http
 204 No Content
-```
-
----
-
-## Calcular tarifa
-
-**POST**
-
-```
-/api/calculos
-```
-
-### Request
-
-```json
-{
-  "categoria": "INDUSTRIAL",
-  "consumo": 18
-}
-```
-
-### Response
-
-```json
-{
-  "categoria": "INDUSTRIAL",
-  "consumoTotal": 18,
-  "valorTotal": 26.00,
-  "detalhamento": [
-    {
-      "faixa": {
-        "inicio": 0,
-        "fim": 10
-      },
-      "m3Cobrados": 10,
-      "valorUnitario": 1.00,
-      "subtotal": 10.00
-    },
-    {
-      "faixa": {
-        "inicio": 11,
-        "fim": 20
-      },
-      "m3Cobrados": 8,
-      "valorUnitario": 2.00,
-      "subtotal": 16.00
-    }
-  ]
-}
 ```
 
 ---
