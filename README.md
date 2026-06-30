@@ -251,40 +251,77 @@ http://localhost:8080
 ### Exemplo de Request
 
 ```json
-{
-  "nome": "Tabela Tarifária 2026",
-  "dataVigencia": "2026-01-01",
-  "categorias": [
-    {
-      "categoria": "INDUSTRIAL",
-      "faixas": [
         {
-          "inicio": 0,
-          "fim": 10,
-          "valorUnitario": 1.00
-        },
-        {
-          "inicio": 11,
-          "fim": 20,
-          "valorUnitario": 2.00
-        },
-        {
-          "inicio": 21,
-          "fim": 999999,
-          "valorUnitario": 5.00
-        }
-      ]
-    }
-  ]
-}
+          "nome": "Tabela Tarifária 2026",
+          "dataVigenciaInicio": "2026-01-01",
+          "dataVigenciaFim": null,
+          "categorias": [
+              {
+                  "id": 1,
+                  "nome": "INDUSTRIAL",
+                  "faixas": [
+                      {
+                          "faixaInicio": 0,
+                          "faixaFim": 10,
+                          "valorUnitario": 1.00
+                      },
+                      {
+                          "faixaInicio": 11,
+                          "faixaFim": 20,
+                          "valorUnitario": 2.00
+                      },
+                      {
+                          "faixaInicio": 21,
+                          "faixaFim": 30,
+                          "valorUnitario": 3.00
+                      },
+                      {
+                          "faixaInicio": 31,
+                          "faixaFim": 999999,
+                          "valorUnitario": 4.00
+                      }
+                  ]
+              }
+          ]
+     }
 ```
 
 ### Response
-
 ```http
-201 Created
+Status 201 created
 ```
-
+```json
+{
+    "id": 2,
+    "nome": "Tabela Tarifária 2026",
+    "dataVigenciaInicio": "2026-01-01",
+    "dataVigenciaFim": null,
+    "categorias": [
+        {
+            "id": 5,
+            "categoria": "INDUSTRIAL",
+            "faixasConsumo": [
+                {
+                    "inicio": 0,
+                    "fim": 10
+                },
+                {
+                    "inicio": 11,
+                    "fim": 20
+                },
+                {
+                    "inicio": 21,
+                    "fim": 30
+                },
+                {
+                    "inicio": 31,
+                    "fim": 999999
+                }
+            ]
+        }
+    ]
+}
+```
 ---
 
 ## Listar tabelas tarifárias
