@@ -28,7 +28,7 @@
  
  **Sistema de Gerenciamento de Tarifas de Água**
  
- ![Java](https://img.shields.io/badge/Java-21-orange)
+ ![Java](https://img.shields.io/badge/Java-25-orange)
  ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F)
  ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791)
  ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
